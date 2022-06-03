@@ -2,8 +2,7 @@ clc
 clear
 
 %"Void Main() Here"
-
-%loading Zak0097
+%loading ZAK0097
 [ZAK002901D1DARKIV,ZAK002901D2DARKIV,ZAK002902D1DARKIV,ZAK002902D2DARKIV] = loadDataZak0097();
 %Processing data Zak0097
 [I1D1,I1D2,I2D1,I2D2] = plotDataProcess(ZAK002901D1DARKIV,ZAK002901D2DARKIV,ZAK002902D1DARKIV,ZAK002902D2DARKIV);
@@ -13,9 +12,63 @@ I1D2 = table2array(I1D2);
 I2D1 = table2array(I2D1);
 I2D2 = table2array(I2D2);
 
-ZAKdata = [I1D1,I1D2,I2D1,I2D2];
+ZAKdata(:,:,1) = I1D1;
+ZAKdata(:,:,2) = I1D2;
+ZAKdata(:,:,3) = I2D1;
+ZAKdata(:,:,4) = I2D1;
 
-output = plot(ZAKdata)
+%output = plot(ZAKdata);
+
+figure(1)
+
+subplot(2,2,1);grid on;title 'ZAK0097 I1D1';
+hold on
+plot(I1D1(:,1),I1D1(:,2));
+plot(I1D1(:,1),I1D1(:,3));
+plot(I1D1(:,1),I1D1(:,4));
+plot(I1D1(:,1),I1D1(:,5));
+plot(I1D1(:,1),I1D1(:,6));
+legend('40°C','60°C','80°C','100°C','120°C')
+xlabel 'Voltage(V)';ylabel 'Current(A)';
+set(gca,'YScale', 'log');
+hold off
+
+subplot(2,2,2);grid on;title 'ZAK0097 I1D2';
+hold on
+plot(I1D2(:,1),I1D2(:,2));
+plot(I1D2(:,1),I1D2(:,3));
+plot(I1D2(:,1),I1D2(:,4));
+plot(I1D2(:,1),I1D2(:,5));
+plot(I1D2(:,1),I1D2(:,6));
+legend('40°C','60°C','80°C','100°C','120°C')
+xlabel 'Voltage(V)';ylabel 'Current(A)';
+set(gca,'YScale', 'log');
+hold off
+
+subplot(2,2,3);grid on;title 'ZAK0097 I2D1';
+hold on
+plot(I2D1(:,1),I2D1(:,2));
+plot(I2D1(:,1),I2D1(:,3));
+plot(I2D1(:,1),I2D1(:,4));
+plot(I2D1(:,1),I2D1(:,5));
+plot(I2D1(:,1),I2D1(:,6));
+legend('40°C','60°C','80°C','100°C','120°C')
+xlabel 'Voltage(V)';ylabel 'Current(A)';
+set(gca,'YScale', 'log');
+hold off
+
+subplot(2,2,4);grid on;title 'ZAK0097 I2D2';
+hold on
+plot(I2D2(:,1),I2D2(:,2));
+plot(I2D2(:,1),I2D2(:,3));
+plot(I2D2(:,1),I2D2(:,4));
+plot(I2D2(:,1),I2D2(:,5));
+plot(I2D2(:,1),I2D2(:,6));
+legend('40°C','60°C','80°C','100°C','120°C')
+xlabel 'Voltage(V)';ylabel 'Current(A)';
+set(gca,'YScale', 'log');
+hold off
+
 
 
 
@@ -86,17 +139,27 @@ function [TempI2D2,I2D2_40,I2D2_60,I2D2_80,I2D2_100,I2D2_120] = I2D2_dataProcess
     I2D2_100 = ZAK002902D2DARKIV(:,"Var5");
     I2D2_120 = ZAK002902D2DARKIV(:,"Var6");
 end
+
+
 %**************ForPlotDataConversion*****END*********
 
-function output = plot(ZAKdata)
-    figure(1)
-    hold on
-    subplot(2,2,4)
-    for plotData = ZAKdata
-        plot(plotData(:,1),plotData(:,2))
-    end
-end
 
-function output = plotTheIV_DarkCurrent()
-    
-end
+% function output = plot(ZAKdata)
+%     output = 1;
+%     disp('Function Called: I2D2_dataProcess()')
+%     figure(1)
+%     hold on
+%     for i = 1:4
+%         subplot(2,2,i)
+%         plotData(:,:) = ZAKdata(:,:,i);
+%         for i = 2 : length(plotData)
+%             %try
+%                 temp = plotData(:,1);
+%                 y = plotData(:,i);
+%                 plot(y',temp')
+%             %end
+% 
+%         end
+%     end
+% end
+
