@@ -21,7 +21,7 @@ ZAKdata(:,:,4) = I2D1;
 
 figure(1)
 
-subplot(2,2,1);grid on;title 'ZAK0097 I1D1';
+subplot(2,2,1);grid on;title 'ZAK0097 I1D1 IV 2ed break down';
 hold on
 plot(I1D1(:,1),I1D1(:,2));
 plot(I1D1(:,1),I1D1(:,3));
@@ -33,7 +33,7 @@ xlabel 'Voltage(V)';ylabel 'Current(A)';
 set(gca,'YScale', 'log');
 hold off
 
-subplot(2,2,2);grid on;title 'ZAK0097 I1D2';
+subplot(2,2,2);grid on;title 'ZAK0097 I1D2 IV 2ed break down';
 hold on
 plot(I1D2(:,1),I1D2(:,2));
 plot(I1D2(:,1),I1D2(:,3));
@@ -45,7 +45,7 @@ xlabel 'Voltage(V)';ylabel 'Current(A)';
 set(gca,'YScale', 'log');
 hold off
 
-subplot(2,2,3);grid on;title 'ZAK0097 I2D1';
+subplot(2,2,3);grid on;title 'ZAK0097 I2D1 IV 2ed break down';
 hold on
 plot(I2D1(:,1),I2D1(:,2));
 plot(I2D1(:,1),I2D1(:,3));
@@ -57,7 +57,7 @@ xlabel 'Voltage(V)';ylabel 'Current(A)';
 set(gca,'YScale', 'log');
 hold off
 
-subplot(2,2,4);grid on;title 'ZAK0097 I2D2';
+subplot(2,2,4);grid on;title 'ZAK0097 I2D2 IV 2ed break down';
 hold on
 plot(I2D2(:,1),I2D2(:,2));
 plot(I2D2(:,1),I2D2(:,3));
@@ -69,7 +69,243 @@ xlabel 'Voltage(V)';ylabel 'Current(A)';
 set(gca,'YScale', 'log');
 hold off
 
+figure(2)
 
+subplot(2,2,1);grid on;grid minor;title 'ZAK0097 I1D1 IV 2ed break down (derivation)';
+hold on
+x=I1D1(:,1);
+y=I1D1(:,2);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D1(:,1);
+y=I1D1(:,3);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D1(:,1);
+y=I1D1(:,4);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D1(:,1);
+y=I1D1(:,5);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D1(:,1);
+y=I1D1(:,6);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+legend('40°C','60°C','80°C','100°C','120°C')
+xlabel 'Voltaged(V)';ylabel 'Current(A)';
+xlim([36 37.8])
+ylim([0 0.005])
+
+hold off
+
+subplot(2,2,2);grid on;grid minor;title 'ZAK0097 I1D2 IV 2ed break down (derivation)';
+hold on
+x=I1D2(:,1);
+y=I1D2(:,2);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D2(:,1);
+y=I1D2(:,3);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D2(:,1);
+y=I1D2(:,4);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D2(:,1);
+y=I1D2(:,5);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D2(:,1);
+y=I1D2(:,6);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+legend('40°C','60°C','80°C','100°C','120°C')
+xlabel 'Voltaged(V)';ylabel 'Current(A)';
+xlim([36 37.8])
+ylim([0 0.005])
+
+hold off
+
+subplot(2,2,3);grid on;grid minor;title 'ZAK0097 I1D2 IV 2ed break down (derivation)';
+hold on
+x=I1D2(:,1);
+y=I1D2(:,2);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D2(:,1);
+y=I1D2(:,3);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D2(:,1);
+y=I1D2(:,4);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D2(:,1);
+y=I1D2(:,5);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I1D2(:,1);
+y=I1D2(:,6);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+legend('40°C','60°C','80°C','100°C','120°C')
+xlabel 'Voltaged(V)';ylabel 'Current(A)';
+xlim([36 37.8])
+ylim([0 0.005])
+
+hold off
+
+subplot(2,2,4);grid on;grid minor;title 'ZAK0097 I2D2 IV 2ed break down (derivation)';
+hold on
+x=I2D2(:,1);
+y=I2D2(:,2);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I2D2(:,1);
+y=I2D2(:,3);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I2D2(:,1);
+y=I2D2(:,4);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I2D2(:,1);
+y=I2D2(:,5);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+x=I2D2(:,1);
+y=I2D2(:,6);
+a=polyfit(x,y,6);
+plot(x,y,x,polyval(a,x))
+xx = min(x):0.1:max(x);
+yy = polyval(a,xx);
+yyy1 = diff(yy)./diff(xx);
+xxx1 = xx(1:length(xx)-1);
+plot(xxx1,yyy1)
+
+legend('40°C','60°C','80°C','100°C','120°C')
+xlabel 'Voltaged(V)';ylabel 'Current(A)';
+xlim([36 37.8])
+ylim([0 0.005])
+
+hold off
 
 
 
