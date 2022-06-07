@@ -1,5 +1,6 @@
 clc
 clear
+close()
 
 %"Void Main() Here"
 %loading ZAK0097
@@ -299,7 +300,6 @@ yy = polyval(a,xx);
 yyy1 = diff(yy)./diff(xx);
 xxx1 = xx(1:length(xx)-1);
 plot(xxx1,yyy1)
-
 legend('40°C','60°C','80°C','100°C','120°C')
 xlabel 'Voltaged(V)';ylabel 'Current(A)';
 xlim([36 37.8])
@@ -307,6 +307,17 @@ ylim([0 0.005])
 
 hold off
 
+y = y';
+figure(3)
+M_temp = [];
+try
+    for i = 1:length(y)
+        a = y(:,i);
+        b = y(i+1);
+        M_temp = [M_temp,abs((b/a))];
+    end
+end
+plot(I2D2(1:201,1),M_temp)
 
 
 
@@ -398,4 +409,3 @@ end
 %         end
 %     end
 % end
-
