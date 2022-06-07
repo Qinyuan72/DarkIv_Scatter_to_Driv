@@ -1,7 +1,6 @@
 clc
 clear
 close()
-
 %"Void Main() Here"
 %loading ZAK0097
 [ZAK002901D1DARKIV,ZAK002901D2DARKIV,ZAK002902D1DARKIV,ZAK002902D2DARKIV] = loadDataZak0097();
@@ -307,17 +306,9 @@ ylim([0 0.005])
 
 hold off
 
-y = y';
 figure(3)
-M_temp = [];
-try
-    for i = 1:length(y)
-        a = y(:,i);
-        b = y(i+1);
-        M_temp = [M_temp,abs((b/a))];
-    end
-end
-plot(I2D2(1:201,1),M_temp)
+plot2edOder(I2D2(:,1),I2D2(:,6));
+
 
 
 
@@ -387,6 +378,19 @@ function [TempI2D2,I2D2_40,I2D2_60,I2D2_80,I2D2_100,I2D2_120] = I2D2_dataProcess
     I2D2_120 = ZAK002902D2DARKIV(:,"Var6");
 end
 
+%记得要转置    data = data'
+
+function [tempture,dData] = plot2edOder(tempture,data)
+    dData = [];
+    try
+        for i = 1:length(data)
+            a = data(:,i);
+            b = data(i+1);
+            dData = [dData,((a+b)/2)];
+        end
+    end
+    plot(tempture,dData)
+end
 
 %**************ForPlotDataConversion*****END*********
 
